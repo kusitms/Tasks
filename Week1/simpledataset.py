@@ -1,5 +1,6 @@
 from torch.utils import data
 import numpy as np
+import pandas as pd
 
 class MyDataset(data.Dataset):
     def __init__(self):
@@ -33,6 +34,7 @@ class MyDatasetAdvanced(data.Dataset):
 
 if __name__ == '__main__':
     mydataset = MyDataset()
+    print(mydataset[0])
     advanced_dataset_train = MyDatasetAdvanced(mode='train')
     advanced_dataset_val = MyDatasetAdvanced(mode='val')
     advanced_dataset_test = MyDatasetAdvanced(mode='test')
