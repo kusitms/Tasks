@@ -17,6 +17,10 @@ When the codes are changed, and your results are satisfactory, you now follow th
 2. `git commit -m 'ANY MESSAGE YOU WANT TO LEAVE'`
 3. `git push`
 
+## Github Desktop
+
+Using commands from terminal is highly recommended, but if you are having hard time, feel free to use Github Desktop. Github Desktop can't provide you ALL the things that you can do from terminal, but there's no problem in completing the process in the study.
+
 # What you have to do.
 
 `classscore.csv` is a csv containing the results of 30 students, each with 60 test results. One student, is one data. `MyDataset` is an easy version, and `MyDatasetAdvanced` is advanced version. If you wish to complete this assignment (As completing the assignment is not mandatory), you can only change MyDataset if advanced version is difficult for you. However, completing the advanced version will be very useful for the Team Project.
