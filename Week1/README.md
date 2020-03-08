@@ -23,7 +23,7 @@ When the codes are changed, and your results are satisfactory, you now follow th
 
 For `MyDataset` you just have to load the csv file provided, and when `print(mydataset[0])` is executed, the result should be the first whole row of the csv provided.
 
-For `MyDatasetAdvanced` you will have to receive additional arg `mode`. `mode` should be 'train', 'val', or 'test'. The ratio should be 7:1:2. So, when `mode == 'train'`, there should be only 21 rows, and so on. You have to be keep in mind that 'train', 'val', 'test' dataset should not have any duplicate rows.
+For `MyDatasetAdvanced` you will have to receive additional arg `mode`. `mode` should be 'train', 'val', or 'test'. The ratio should be 7:1:2. So, when `mode == 'train'`, there should be only 21 rows, and so on. You have to keep in mind that 'train', 'val', 'test' dataset should not have any duplicate rows.
 
 # Due
 
