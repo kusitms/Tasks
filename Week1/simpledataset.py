@@ -5,32 +5,34 @@ import pandas as pd
 class MyDataset(data.Dataset):
     def __init__(self):
         super().__init__()
-        ```
-        Your code should be written here
-        ```
+        #self.data = pd.read_csv("classscore.csv", index_col=0).to_dict(orient='records')
+        self.data = pd.read_csv("classscore.csv")
+        
     def __len__(self):
-        ```
-        Your code should be written here
-        ```
+        return len(self.data)
+        
     def __getitem__(self, index):
-        ```
-        Your code should be written here
-        ```
+        item = self.data.loc[index]
+        return item
 
 class MyDatasetAdvanced(data.Dataset):
     def __init__(self, mode):
         super().__init__()
-        ```
-        Your code should be written here
-        ```
+        self.data = pd.read_csv("classscore.csv")
+        if mode == 'train':
+            self.data2 = self.data.sample(frac=0.7)
+        if mode == 'val':
+            self.data2 = self.data.sample(frac=0.1)
+        if mode == 'test':
+            self.data2 = self.data.sample(frac=0.2) 
+        
     def __len__(self):
-        ```
-        Your code should be written here
-        ```
+        return len(self.data2)
+        
     def __getitem__(self, index):
-        ```
-        Your code should be written here
-        ```
+        item = self.data2.iloc[index]
+        return item
+                
 
 if __name__ == '__main__':
     mydataset = MyDataset()
