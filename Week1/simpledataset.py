@@ -37,7 +37,7 @@ class MyDatasetAdvanced(data.Dataset):
         return self.df2.shape[0] 
     
     def __getitem__(self, index):
-        item = self.df2.loc[index]
+        item = self.df2.iloc[index]
         return item
 
 
