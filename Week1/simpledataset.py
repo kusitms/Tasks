@@ -2,14 +2,14 @@ from torch.utils import data
 import numpy as np
 import pandas as pd
 
-data_cs = pd.read_csv('C:/Users/nsd96/final_week1/Week1/classscore.csv',encoding='utf-8')
+class_score = pd.read_csv('C:/Users/nsd96/final_week1/Week1/classscore.csv',encoding='utf-8')
 
 
 class MyDataset(data.Dataset):
     def __init__(self):
         super().__init__()
 
-        self.sample_array = data_cs
+        self.sample_array = class_score
 
     def __len__(self):
         return len(self.sample_array)
@@ -22,15 +22,15 @@ class MyDataset(data.Dataset):
 class MyDatasetAdvanced(data.Dataset):
     def __init__(self, mode):
         super().__init__()
-        self.sample_array = data_cs
+        self.sample_array = class_score
         self.mode = mode
         if mode == 'train':
-            self.sample_array = self.sample_array.iloc[:21, :]
+            self.sample_array = self.sample_array.sample(frac=0.7, replace=True, random_state=1)
         elif mode == 'val':
-            self.sample_array = self.sample_array.iloc[21:24, :]
+            self.sample_array = self.sample_array.sample(frac=0.1, replace=True, random_state=1)
         elif mode == 'test':
-            self.sample_array = self.sample_array.iloc[24:, :]
-        print(self.sample_array)
+            self.sample_array = self.sample_array.sample(frac=0.2, replace=True, random_state=1)
+        print('{} Data is \n {}'.format(mode, self.sample_array))
 
     def __len__(self):
         return len(self.sample_array(mode))
