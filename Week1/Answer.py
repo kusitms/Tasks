@@ -1,6 +1,7 @@
 from torch.utils import data
 import numpy as np
 import pandas as pd
+import random as rd
 
 class MyDataset(data.Dataset):
     def __init__(self):
@@ -19,21 +20,19 @@ class MyDatasetAdvanced(data.Dataset):
     def __init__(self, mode):
         self.matrix = pd.read_csv(r'C:\Users\dgfghsjd\Desktop\Week1\classscore.csv')
         self.mode = mode
-        array_TR = np.random.randint(30, size = int(len(self.matrix)*0.7))
-        array_TS = np.random.randint(30, size = int(len(self.matrix)*0.2))
-        array_VA = np.random.randint(30, size = int(len(self.matrix)*0.1))
+
         if mode == "val":
-            print("------------VALIDATION DATA ", len(array_VA), " 개------------")
-            for i in array_VA:
-                print(self[i])
+            print("------------VALIDATION DATA ", int(len(self.matrix) * 0.1), " 개------------")
+            for i in range( int(len(self.matrix) * 0.1)):
+                print(self[ np.random.randint(30)])
         elif mode == "test":
-            print("------------TEST DATA ", len(array_TS), " 개------------")
-            for i in array_TS:
-                print(self[i])
+            print("------------TEST DATA ", int(len(self.matrix) * 0.2), " 개------------")
+            for i in range( int(len(self.matrix) * 0.2)):
+                print(self[np.random.randint(30)])
         elif mode == "train":
-            print("------------TRAINING DATA ", len(array_TR), " 개------------")
-            for i in array_TR:
-                print(self[i])
+            print("------------TRAINING DATA ", int(len(self.matrix) * 0.7), " 개------------")
+            for i in range( int(len(self.matrix) * 0.7)):
+                print(self[np.random.randint(30)])
         
     def __len__(self):
         return len(self.matrix)
