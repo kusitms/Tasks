@@ -22,16 +22,16 @@ class MyDatasetAdvanced(data.Dataset):
 
         if mode == "val":
             print("------------VALIDATION DATA ", int(len(self.matrix) * 0.1), " 개------------")
-            for i in range( int(len(self.matrix) * 0.1)):
-                print(self[ np.random.randint(30)])
+            mat_val = self.matrix.sample(frac = 0.1)
+            print(mat_val)
         elif mode == "test":
             print("------------TEST DATA ", int(len(self.matrix) * 0.2), " 개------------")
-            for i in range( int(len(self.matrix) * 0.2)):
-                print(self[np.random.randint(30)])
+            mat_ts = self.matrix.sample(frac = 0.2)
+            print(mat_ts)
         elif mode == "train":
             print("------------TRAINING DATA ", int(len(self.matrix) * 0.7), " 개------------")
-            for i in range( int(len(self.matrix) * 0.7)):
-                print(self[np.random.randint(30)])
+            mat_tr = self.matrix.sample(frac = 0.7)
+            print(mat_tr)
         
     def __len__(self):
         return len(self.matrix)
