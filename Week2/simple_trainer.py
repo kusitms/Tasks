@@ -54,7 +54,7 @@ class MyTrainer:
         self.optimizer.step()
 
     def train(self):
-        for epoch in range(self.epochs):
+        for epoch in range(self.total_epochs):
             for feature, label in self.train_datagenerator:
                 """
                     Implement training part.
