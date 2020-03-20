@@ -13,12 +13,13 @@ class MyDataset(data.Dataset):
 
         self.features = self.df[:, :20]
         self.labels = self.df[:, -1]
+        self.labels = np.expand_dims(self.labels,axis=1)
 
     def __len__(self):
         return len(self.df)
 
     def __getitem__(self, index):
-        return torch.FloatTensor(self.features[index, :]), self.labels[index] #FloatTensor(labels) => error...
+        return torch.FloatTensor(self.features[index, :]), torch.FloatTensor(self.labels[index])
 
 
 class MyModel(nn.Module):
@@ -45,7 +46,7 @@ class MyTrainer:
         self.train_datagenerator = data.DataLoader(self.train_dataset, batch_size, drop_last=True)
         self.val_datagenerator = data.DataLoader(self.val_dataset, batch_size, drop_last=True)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr)
-        self.loss = nn.MSELoss()
+        self.loss = nn.MSELoss(reduce=False)
         self.total_epochs = total_epochs
 
     def update(self, loss):
