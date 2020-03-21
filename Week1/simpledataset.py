@@ -5,9 +5,8 @@ import pandas as pd
 class MyDataset(data.Dataset):
     def __init__(self):
         super().__init__()
-        ```
-        Your code should be written here
-        ```
+        self.df = pd.read_csv('./classcore.csv')
+                ```
     def __len__(self):
         ```
         Your code should be written here
