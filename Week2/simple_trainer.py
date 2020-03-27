@@ -58,14 +58,14 @@ class MyTrainer:
         for epoch in range(self.total_epochs):
             for feature, label in self.train_datagenerator:
                 hypothesis = self.model(feature)
-                loss = self.loss(hypothesis, label.float())
+                loss = self.loss(hypothesis, label)
                 self.update(loss)
             if epoch % 10 == 0:
                 print('Train -- Epoch: {} Loss: {}'.format(epoch,loss))
 
             for feature, label in self.val_datagenerator:
                 hypothesis = self.model(feature)
-                loss = self.loss(hypothesis, label.float())
+                loss = self.loss(hypothesis, label)
             if epoch % 10 == 0:
                 print('Val -- Epoch: {} Loss: {}'.format(epoch, loss))
                 print('')
